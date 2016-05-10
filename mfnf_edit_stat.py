@@ -153,5 +153,5 @@ def new_articles_since(start):
     return len(list(filter(lambda x: x > start, map(article_time, articles))))
 
 if __name__ == "__main__":
-    #log_50euro_edits()
-    print(new_articles_since(datetime(2016, 1, 1)))
+    log_50euro_edits()
+    #print(new_articles_since(datetime(2016, 1, 1)))
