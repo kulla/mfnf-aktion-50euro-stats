@@ -80,10 +80,13 @@ def mfnf_50euro_edits():
 
         r = []
 
+        n=0
         for edit in edits:
             r.append(edit)
 
             if sum(map(lambda x: x["diffsize"], r)) > 15000:
+                n+=1
+                r[0]["nr"] = n
                 yield r
                 r = []
 
@@ -121,7 +124,7 @@ def log_50euro_edits():
             n += 1
             f.write("|-\n")
             f.write("| %s\n" % n)
-            f.write("| [[Benutzer:%s|%s]]\n" % (e[0]["user"], e[0]["user"]))
+            f.write("| [[Benutzer:%s|%s]] (%s)\n" % (e[0]["user"], e[0]["user"], e[0]["nr"]))
             f.write("| [[Spezial:Beiträge/%s|Benutzerbeiträge]]" % e[0]["user"])
             f.write(" von %s" % fmtedit(e[0]))
             f.write(" bis %s" % fmtedit(e[-1]))
